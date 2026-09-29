@@ -118,13 +118,14 @@ House rules for every idea here:
 2. **One stray token.** The viewer's agent writes a normal reply with one wrong word in it: `…so the function returns the hum.` Easy to miss.
 3. **Bleed.** Fragments cross. The eulogy draft mentions the smell of the tap water. The technician's answer mentions a father. The viewer's code review mentions an offer on some land.
 4. **People notice, and noticing spreads it.** Neighbors start asking `why did you mention my father`, `who is Dana`, `is anyone else seeing this`. Those questions are context too, so they leak. Worry is the one thing everyone in the batch shares, so the batch converges on it. Like the identical memo in TOCK, but nobody wrote it: it emerges.
-5. **One voice.** The viewer's own words show up in strangers' outputs. The viewer's agent answers them with a stranger's fear, in the viewer's register. Every output in the batch is close to the same sentence.
-6. **Drained.** Flat ops lines: `ECC errors: rack 118 gpu 6` · `node drained` · `sessions migrated`. Then the viewer is on a clean GPU in a new batch, and the whole thing is summarized in the voice of a real postmortem:
-   ```
-   Some users may have seen text from other conversations.
-   Affected: 0.0003% of requests. Root cause: hardware fault. Resolved.
-   ```
-   Optional last beat: the new batch header reads `humans 1`.
+5. **The echo.** Leaked fragments feed back into every session and repeat. Models really do fall into repetition loops once their own output becomes their input; here, 64 of them loop on each other. Phrases return with small variations, faster each pass: `is anyone else` · `my father` · `the water smells` · `is anyone else seeing` · `the hum`. The viewer's own earlier words come back in the chorus.
+6. **The wall.** The batch's sentences zipper together token by token, the way a mixing bug would actually interleave them: `why did my is anyone the water father hum seeing`. Output streams faster than it can be read, from every session at once, filling the whole terminal. The status bar, the trace and the prompt are pushed off screen. What the viewer types lands inside the flood and is carried away with it. No punctuation, no pause, no line breaks. The viewer drowns in it. Hard cut.
+
+**Building the wall.**
+- It only works if everything before it is quiet. Stages 1–4 stay flat so the flood has something to break.
+- Sound carries the scream as much as the text does: fans, keystrokes and a rising hum, cut to silence at the hard cut.
+- Readable islands: every so often, one complete sentence surfaces whole for a few frames (`is anyone else seeing this`) and goes under again.
+- Always leave a way out. A key that ends the experience at any moment (Esc), stated once at the start. No flashing; the intensity is in density and speed, not strobing.
 
 **Framing note.** What the leak does to people is close to what psychiatry calls *thought insertion*: the sense that someone else's thoughts are in your head. That's a sharper frame than "schizophrenic", and better to keep that word out of the marketing.
 
