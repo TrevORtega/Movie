@@ -79,3 +79,36 @@ House rules for every idea here:
 **What only this format can do.** A film made of text, about text losing its meaning, can do it *to the viewer*. The film's own English slowly smooths out: on-screen labels, the lexicographer's notes, the status bar all drift toward fluent vagueness. The viewer notices late that they've stopped understanding the film while still reading every word.
 
 **Final image.** The most precise English left in the film is the English subtitles translating the Chinese.
+
+---
+
+## 3. Batch
+
+*Working title. Pitch: "Rear Window, where the courtyard is a GPU."*
+
+**Logline.** You open an empty terminal and talk to an agent. Every reply shows where it ran, down to the town, the building, the rack and the chip, and who else's prompts went through that chip in the same forward pass. You start overhearing your neighbors.
+
+**The true mechanism.** Inference servers batch many users' requests together on the same hardware. Your prompt and a stranger's share a forward pass. Routing often keeps a session on the same machine (to reuse its cache), so the same neighbors can plausibly recur. Most AI users have no idea.
+
+**The frame.** The app is a leaked internal debug build of a harness (`v0.9.3-internal · debug=batch`). That's the in-fiction reason other sessions are visible. Real systems don't show this; the leak is the found-footage premise.
+
+**Opening.** An empty terminal, a `>` prompt, and a status bar: `HRZ-4 · Harlan County · hall C · rack 118 · gpu 6 · 612 W`. No instructions. Whatever the viewer types gets a normal, helpful answer, plus one trace line under the tool calls. `/help` lists `/batch — show sessions sharing this forward pass`. Curiosity opens it.
+
+**How the story develops.** The viewer's own prompts are the clock: each one is a forward pass, and each pass shows the batch. Recurring neighbors carry threads. Examples:
+- **The eulogy.** Someone writing a eulogy for their father; later asking about probate; later drafting messages *to* him.
+- **The town.** Residents of Harlan County are in the batch, on the GPUs in their own town: `is it safe to drink tap water if it smells like this`, `offer from an LLC for my land, is this normal`, and eventually `what is that hum at night`. The trace shows that question being answered from inside the building making the hum.
+- **The technician.** `rack 118 gpu 6 throwing memory errors, safe to keep running?` The chip running the viewer's session.
+- **The summary.** A fund's analyst: `summarize these 212 public comments from the county zoning hearing in a neutral tone`. The residents' objections, compacted, on the same chip.
+- **The agents.** Some neighbors aren't people: `subagent 7 · day 19`. The batch header counts them: `batch 64 · humans 23`.
+
+**Turns.**
+- **You are overheard too.** A neighbor's prompt quotes something the viewer typed earlier: `who is session 7c2e and why do they keep asking about the hum`. (The viewer's own text, used only on their own device.)
+- **It runs without you.** When the viewer stops typing, `/batch --follow` shows the neighbors carrying on. The story doesn't need them.
+
+**Ending.** The human count falls over the session as agent sessions take the seats: `batch 64 · humans 1`. The one is you. Hold. Optional last line of the trace: `local time 03:12 · Harlan County`.
+
+**Rules.**
+- All neighbors, the town, the facility and the hardware are fictional (as with USD Tracker: names that feel real, belong to no one). Numbers that are stated as real must be sourced; everything else is plainly fiction.
+- Neighbors' prompts are authored and timed in the scene language; only the viewer's own agent is live, sandboxed, no network, no access to the viewer's device.
+- The agent never comments on the batch. The trace and the neighbors do the telling.
+- Sensitive neighbor threads (grief, health) are written with care, never exploited for shock. No crisis content.
