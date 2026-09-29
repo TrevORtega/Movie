@@ -105,10 +105,32 @@ House rules for every idea here:
 - **You are overheard too.** A neighbor's prompt quotes something the viewer typed earlier: `who is session 7c2e and why do they keep asking about the hum`. (The viewer's own text, used only on their own device.)
 - **It runs without you.** When the viewer stops typing, `/batch --follow` shows the neighbors carrying on. The story doesn't need them.
 
-**Ending.** The human count falls over the session as agent sessions take the seats: `batch 64 · humans 1`. The one is you. Hold. Optional last line of the trace: `local time 03:12 · Harlan County`.
+**The leak (the main arc).** Tokens start crossing between sequences in the same batch. Because generation is autoregressive, every leaked token becomes part of that session's context, and everything after it is conditioned on it. The contamination compounds inside each session and spreads across the batch.
+
+*Why it's plausible (all real):*
+- **Output depends on the batch.** Inference results can change with who else is in the batch (Thinking Machines, "Defeating Nondeterminism in LLM Inference", 2025). Your answer is already, very slightly, shaped by your neighbors.
+- **GPU memory has leaked between users.** LeftoverLocals (Trail of Bits, 2024): leftover GPU memory let one process recover another's LLM output.
+- **Stray tokens have shipped.** Production incidents have put characters from the wrong language into answers (e.g. Anthropic's September 2025 postmortem), and a 2023 ChatGPT bug showed users other users' chat titles.
+- **Fictional mechanism:** a paged-attention block-table bug after a memory error. Pages of the cache that hold one conversation get mapped to another, so a request attends to a stranger's context.
+
+*Stages:*
+1. **Clean.** The viewer overhears the batch. The technician's question (`rack 118 gpu 6 throwing memory errors, safe to keep running?`) is planted here: it's the root cause, and nobody acts on it.
+2. **One stray token.** The viewer's agent writes a normal reply with one wrong word in it: `…so the function returns the hum.` Easy to miss.
+3. **Bleed.** Fragments cross. The eulogy draft mentions the smell of the tap water. The technician's answer mentions a father. The viewer's code review mentions an offer on some land.
+4. **People notice, and noticing spreads it.** Neighbors start asking `why did you mention my father`, `who is Dana`, `is anyone else seeing this`. Those questions are context too, so they leak. Worry is the one thing everyone in the batch shares, so the batch converges on it. Like the identical memo in TOCK, but nobody wrote it: it emerges.
+5. **One voice.** The viewer's own words show up in strangers' outputs. The viewer's agent answers them with a stranger's fear, in the viewer's register. Every output in the batch is close to the same sentence.
+6. **Drained.** Flat ops lines: `ECC errors: rack 118 gpu 6` · `node drained` · `sessions migrated`. Then the viewer is on a clean GPU in a new batch, and the whole thing is summarized in the voice of a real postmortem:
+   ```
+   Some users may have seen text from other conversations.
+   Affected: 0.0003% of requests. Root cause: hardware fault. Resolved.
+   ```
+   Optional last beat: the new batch header reads `humans 1`.
+
+**Framing note.** What the leak does to people is close to what psychiatry calls *thought insertion*: the sense that someone else's thoughts are in your head. That's a sharper frame than "schizophrenic", and better to keep that word out of the marketing.
 
 **Rules.**
-- All neighbors, the town, the facility and the hardware are fictional (as with USD Tracker: names that feel real, belong to no one). Numbers that are stated as real must be sourced; everything else is plainly fiction.
-- Neighbors' prompts are authored and timed in the scene language; only the viewer's own agent is live, sandboxed, no network, no access to the viewer's device.
-- The agent never comments on the batch. The trace and the neighbors do the telling.
+- **Real names (decided).** Real hardware and real companies. Get a legal review before release for any real operator, facility or town shown leaking users' data; the "leaked internal build" framing makes it read as real, which raises the risk.
+- Numbers stated as real must be sourced.
+- Neighbors' prompts and the leak are authored and timed in the scene language; the leaked tokens are spliced into the live agent's output by the app. Only the viewer's own agent is live, sandboxed, no network, no access to the viewer's device.
+- The agent never comments on the batch or the leak. The trace and the neighbors do the telling.
 - Sensitive neighbor threads (grief, health) are written with care, never exploited for shock. No crisis content.
