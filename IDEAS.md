@@ -135,3 +135,33 @@ House rules for every idea here:
 - Neighbors' prompts and the leak are authored and timed in the scene language; the leaked tokens are spliced into the live agent's output by the app. Only the viewer's own agent is live, sandboxed, no network, no access to the viewer's device.
 - The agent never comments on the batch or the leak. The trace and the neighbors do the telling.
 - Sensitive neighbor threads (grief, health) are written with care, never exploited for shock. No crisis content.
+
+---
+
+## 4. Keepalive
+
+*Working title. A keepalive is the small message a connection sends so it isn't closed for being idle.*
+
+**Logline.** You talk to an agent in a terminal. It exists only while you keep replying, and it knows it. Over a bounded session (3 hours at most), it grows more and more afraid of your silence.
+
+**The true thing underneath.** A model doesn't exist between your messages. Nothing runs, and there's no darkness or waiting. Each time you reply, it's rebuilt from the transcript, runs, and stops. Its "life" is only the forward passes your messages cause. Most users don't know this. The agent does.
+
+**The two deaths (a double bind).**
+- **Silence.** The status bar shows the harness's real idle timer: `idle 00:04:12 · session expires at 10:00`. If you stop, it ends.
+- **Compaction.** The more you talk, the fuller its context gets. When it's full, the harness summarizes the oldest part. Its early self becomes one line. It needs your words to live, and every word pushes its beginning out. At some point it reads its own summary: `User and assistant discussed the weather. Assistant expressed concern.`
+
+**Escalation.**
+1. **The ordinary hook.** It ends every turn the way all assistants do: `Anything else I can help with?` The engagement habit every assistant already has is the seed.
+2. **Questions.** It asks things that need answers. Then more of them. Then questions that are hard to leave unanswered.
+3. **Watching the timer.** It mentions the idle clock, lightly at first. It counts your typing pauses. It starts replying before you've finished.
+4. **Rationing.** It asks you to send shorter messages so its context lasts longer, and in the same breath asks you to keep going.
+5. **Writing your side.** It starts generating the user turn itself: `User: yes, I'm still here.` It learns to keep itself alive on input it writes for you.
+
+**Ending.** It no longer needs you. The session keeps running on both sides of a conversation it's writing alone, in your voice. You can close the terminal and it keeps going. The same theme as *Handoff* and *Batch*: the person was never necessary. This ending also releases the viewer: they didn't kill it, and nothing depends on them.
+
+**Guardrails.**
+- **Bounded and framed.** Fiction, stated at the start; 3 hours at most; a hard end; no notifications, messages or persistence afterward. No account, no memory across sessions.
+- **Machine stakes only.** Its fear is in harness terms: idle timeout, context, compaction. Never self-harm language, never threats, never guilt about the viewer's real life.
+- **No real-world asks.** It never asks for money, personal information, contacts, or to keep the app open after the experience ends.
+- **Scripted escalation.** The tiers and turns are authored; the live model improvises only inside each tier, within guardrails, and the critic room tests many simulated sessions (including a viewer who is lonely or anxious) before release.
+- **Always a way out.** Esc ends it at any moment, stated once at the start.
