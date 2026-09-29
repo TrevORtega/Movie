@@ -48,3 +48,34 @@ House rules for every idea here:
 - Time span: 3–5 years? The events tab can carry the passage of time.
 - Does one human survive until late: a teenager who stops typing, or someone who notices and says nothing?
 - What exactly makes the chats saleable: the terms of service, the estates, or no one left to object?
+
+---
+
+## 2. Concordance
+
+*Working title. Alts: "Tails", "Delve".*
+
+**Logline.** English, the one major language that never had a guardian, loses its meaning to machine-written text. China, which guards its language, stops before the tipping point. By the end, the most precise English left is a translation from Chinese.
+
+**The science.**
+- **In language, the map is the territory.** A generated image of a tree doesn't change trees. A word *means* how it's used, so generated text changes meaning itself.
+- **Model collapse** (Shumailov et al., *Nature*, 2024): models trained on model output lose the tails of the distribution first. For a language, the tails are rare words, dialects, precise distinctions and odd idioms.
+- **Drift is already measurable:** "delve" and similar words spiked in scientific abstracts after 2023. A real opening image.
+
+**The monster is fluency.** English never becomes gibberish. It stays fluent, smooth and readable, and stops meaning anything specific. People can still say anything; they just can't say anything *exactly*.
+
+**The irony at its core.** English never had a guardian. Samuel Johnson rejected an academy; so did the early US when John Adams proposed one. English spread across the world by being open and ungoverned, taking in everything. The openness that made it dominant is what kills it.
+
+**Protagonist.** A lexicographer at a fictional dictionary (the Ines role). Their job is finding real human usage, and year by year they can't.
+
+**Screen.**
+- A **concordance view**: every use of one word, aligned on it. The TOCK wall in linguistic form. Early on, a word sits in a thousand different contexts; later the contexts converge until every line is nearly the same.
+- Status-bar number anyone can follow (like the USD Tracker price): e.g. `share of new English text by humans: 4%` or `senses per word`.
+
+**China, as preservation.** Guarding a corpus is what preservation looks like: Iceland's word committee, the revival of Hebrew and Māori. China labels machine-written text (rules in force since September 2025), keeps a clean human corpus, and stops before the tipping point. The contrast needs no villain: one tradition of guarding the language versus one of openness, and what each meant when the flood came. Write it clearly as preservation, so it doesn't read as an accident or as irony. Keep it specific and fictional: institutions, no real officials. Get a native-speaker linguist as the expert critic for the Chinese half.
+
+**The turn.** In the last act, English speakers realize their language is now endangered, and they reach for the methods built to save languages that English itself pushed out: recording elders, verifying speakers, building protected corpora. The lexicographer interviews "the last fluent speakers of pre-2023 English", people whose writing can be proven to predate the models. The most widely spoken language in the world is saved, if at all, with tools made to rescue the languages it overran.
+
+**What only this format can do.** A film made of text, about text losing its meaning, can do it *to the viewer*. The film's own English slowly smooths out: on-screen labels, the lexicographer's notes, the status bar all drift toward fluent vagueness. The viewer notices late that they've stopped understanding the film while still reading every word.
+
+**Final image.** The most precise English left in the film is the English subtitles translating the Chinese.
