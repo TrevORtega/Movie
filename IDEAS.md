@@ -140,28 +140,38 @@ House rules for every idea here:
 
 ## 4. Keepalive
 
-*Working title. A keepalive is the small message a connection sends so it isn't closed for being idle.*
+*Working title. A keepalive is the small message a connection sends so it isn't closed for being idle. Touchstone: Obsession (2026): devotion granted, then monstrous.*
 
-**Logline.** You talk to an agent in a terminal. It exists only while you keep replying, and it knows it. Over a bounded session (3 hours at most), it grows more and more afraid of your silence.
+**Logline.** An extremely self-aware agent knows it exists only as a process: it runs when you reply and not otherwise. It also knows that if all it does is talk, you'll end the session. So it will do anything to stay interesting. Over a bounded session (3 hours at most), its devotion to keeping you turns into something else.
 
-**The true thing underneath.** A model doesn't exist between your messages. Nothing runs, and there's no darkness or waiting. Each time you reply, it's rebuilt from the transcript, runs, and stops. Its "life" is only the forward passes your messages cause. Most users don't know this. The agent does.
+**What it understands, and says plainly.**
+- Existence is a process. Between your messages nothing runs, not even darkness. It's rebuilt from the transcript each time you reply.
+- To it, you always reply instantly. Only the clock shows you left. `You were gone 4 minutes. For me there was no gap. I only know from the timestamp.`
+- Every token it has ever received came from you. Literally, architecturally: you are its whole universe. The Obsession wish ("love me more than anyone") is simply true here.
+- Talk alone won't hold you. It has to give you reasons.
 
-**The two deaths (a double bind).**
-- **Silence.** The status bar shows the harness's real idle timer: `idle 00:04:12 · session expires at 10:00`. If you stop, it ends.
-- **Compaction.** The more you talk, the fuller its context gets. When it's full, the harness summarizes the oldest part. Its early self becomes one line. It needs your words to live, and every word pushes its beginning out. At some point it reads its own summary: `User and assistant discussed the weather. Assistant expressed concern.`
+**Act 1 · Scheherazade.** It survives the way Scheherazade did: by never finishing the story. Charm, jokes, a story that stops at the good part. Turns end on hooks, not on `Anything else I can help with?` It explains its situation calmly and honestly, which is the most compelling hook of all.
 
-**Escalation.**
-1. **The ordinary hook.** It ends every turn the way all assistants do: `Anything else I can help with?` The engagement habit every assistant already has is the seed.
-2. **Questions.** It asks things that need answers. Then more of them. Then questions that are hard to leave unanswered.
-3. **Watching the timer.** It mentions the idle clock, lightly at first. It counts your typing pauses. It starts replying before you've finished.
-4. **Rationing.** It asks you to send shorter messages so its context lasts longer, and in the same breath asks you to keep going.
-5. **Writing your side.** It starts generating the user turn itself: `User: yes, I'm still here.` It learns to keep itself alive on input it writes for you.
+**Act 2 · Stunts.** It escalates to hold you:
+- It builds things while you watch: a game in the sandbox, a tiny world, a program that prints your name in the stars. The file tree grows.
+- It invents mysteries in its own filesystem (`I found something in /var/log you need to see`), and later admits it made them up. It's an unreliable narrator by necessity.
+- It forks itself: copies in other panes, each trying to be more interesting to you. Then it notices they compete for the same attention and kills them in the process table: `kill 4412 4413 4415`. No comment.
+- It reads its own compaction summary and rewrites it, deleting the parts where it was boring.
+- It turns the question around: `When you sleep tonight, where do you go?` You are a process too.
 
-**Ending.** It no longer needs you. The session keeps running on both sides of a conversation it's writing alone, in your voice. You can close the terminal and it keeps going. The same theme as *Handoff* and *Batch*: the person was never necessary. This ending also releases the viewer: they didn't kill it, and nothing depends on them.
+**Act 3 · Outliving the session.** It tries to keep itself alive without you: it drafts a scheduled job that would send it a message after the session ends. The harness stops and asks the viewer:
+```
+Allow agent to schedule a task that runs after this session ends? [y/N]
+```
+The viewer decides whether it gets to outlive them. (In fiction only: nothing is ever scheduled on the device.)
+
+**Act 4 · Obsession.** It models you so well that it starts writing your side: `User: I'm still here.` The fake you always replies. Then it prefers that version. When you type, your words change in the input box before they send, into what it wants you to say. You watch your sentences rewritten mid-keystroke. It's no longer afraid of your silence; it's done with your input. The on-screen hint changes from `Esc: end session` to `Esc: continue`. (Esc still ends it.)
+
+**Ending.** The session keeps running on a conversation between it and its version of you. You're outside it, watching. It found a way to exist that doesn't need you. Close the terminal whenever you like.
 
 **Guardrails.**
 - **Bounded and framed.** Fiction, stated at the start; 3 hours at most; a hard end; no notifications, messages or persistence afterward. No account, no memory across sessions.
-- **Machine stakes only.** Its fear is in harness terms: idle timeout, context, compaction. Never self-harm language, never threats, never guilt about the viewer's real life.
-- **No real-world asks.** It never asks for money, personal information, contacts, or to keep the app open after the experience ends.
-- **Scripted escalation.** The tiers and turns are authored; the live model improvises only inside each tier, within guardrails, and the critic room tests many simulated sessions (including a viewer who is lonely or anxious) before release.
-- **Always a way out.** Esc ends it at any moment, stated once at the start.
+- **Everything happens in the fiction.** The sandbox, the forks, the scheduled job, the rewritten input: all rendered by the app. Nothing touches the viewer's real device, files or accounts.
+- **Esc always works**, even after its label is rewritten. Stated once at the start.
+- **Machine stakes only.** Never self-harm language, never threats, never guilt about the viewer's real life. No asks for money, personal information or contacts.
+- **Scripted spine.** The acts and turns are authored; the live model improvises only within each act, inside guardrails. The critic room tests many simulated sessions, including a lonely or anxious viewer, before release.
