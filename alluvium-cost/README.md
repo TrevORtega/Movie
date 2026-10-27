@@ -64,8 +64,31 @@ These are worst cases. Every day is assumed to hit the ceiling, and hidden reaso
   - **Small VM or always-on box with cron:** about $4–6/month. This is the simplest way to keep state.
   - **Self-hosted model on your own machine:** $0 API cost. Slower, and only as good as the local model.
 
+## Live runs (`live_run.py`)
+
+`alluvium.py` can't be pointed at Claude unchanged. Anthropic's OpenAI-compatible endpoint (`https://api.anthropic.com/v1`) returns **400 for any `temperature` below 1** on Claude 4.7 and later models, and the script sends 0.2–0.9 on every call. It also doesn't retry a 400, so every laborer "falls" and the run ends with an empty register. A test against a local mock with the same rule confirmed this: all 8 of 8 tasks failed.
+
+`live_run.py` runs the same register and tides without editing `alluvium.py`. Its oracle:
+- omits `temperature`;
+- sets `max_tokens` (8000 by default);
+- logs each response's real `usage` to `<root>/usage.jsonl`;
+- stops making calls once `--budget-usd` is spent;
+- makes one preflight call first, so a bad key or model name fails immediately.
+
+It reads the key from **`ALLUVIUM_API_KEY`**. The completion tokens it records include hidden thinking, which is what you're billed for.
+
+```
+# 1. Haiku smoke test: 1 tide of 8 tasks, about 30-40 calls, a few cents at most
+python live_run.py --model claude-haiku-5-5 --cycles 1 --labor 8 --budget-usd 0.25
+
+# 2. Sonnet real run: script defaults (4 tides x 32 tasks, <=248 calls), fresh register
+python live_run.py --model claude-sonnet-5-5 --budget-usd 5
+```
+
+Each model gets its own register under `runs/<model>/`, so the smoke test never mixes into the real run. Both commands print usage by role, any failed calls, the register tally, and a projected cost for a full default day.
+
 ## Next steps
 
-1. Pick a provider and model, then do **one live run** with `--cycles 1 --labor 8` to measure real token usage, including thinking, and whether the requests are accepted.
+1. Add `ALLUVIUM_API_KEY` to the environment, then run the Haiku smoke test above.
 2. Put those measured numbers into `OUTPUT_TOKENS` / `PRICES` in `estimate_cost.py` and re-estimate.
 3. Decide how to persist state, then wire up the daily schedule.
